@@ -20,14 +20,45 @@ const seed = async () => {
     // Generating Seed Data
 
     // Optional: Truncate tables (remove existing data)
-    await database.query("truncate item");
+    await database.query("DELETE FROM category");
+    await database.query("ALTER TABLE category AUTO_INCREMENT=1");
+    await database.query("DELETE FROM manufacturer");
+    await database.query("ALTER TABLE manufacturer AUTO_INCREMENT=1");
+    await database.query("TRUNCATE product");
+
+    // Insert fake data into the 'category' table
+    for (let i = 0; i < 6; i += 1) {
+      queries.push(
+        database.query("INSERT INTO category(name) VALUES (?)", [
+          faker.commerce.department(),
+        ])
+      );
+    }
+
+    // Insert fake data into the 'manufacturer' table
+    for (let i = 0; i < 8; i += 1) {
+      queries.push(
+        database.query(
+          "INSERT INTO manufacturer(name, production_country) VALUES (?, ?)",
+          [faker.company.name(), faker.location.country()]
+        )
+      );
+    }
 
     // Insert fake data into the 'item' table
-    for (let i = 0; i < 10; i += 1) {
+    for (let i = 0; i < 30; i += 1) {
       queries.push(
-        database.query("insert into item(title) values (?)", [
-          faker.lorem.word(),
-        ])
+        database.query(
+          "INSERT INTO product(name, quantity, price, is wish, category_id, manufacturer_id) VALUES (?, ?, ?, ?, ?, ?)",
+          [
+            faker.commerce.product(),
+            faker.number.int({ min: 2, max: 50 }),
+            faker.commerce.price({ max: 50 }),
+            0,
+            faker.number.int({ min: 1, max: 6 }),
+            faker.number.int({ min: 1, max: 8 }),
+          ]
+        )
       );
     }
 
