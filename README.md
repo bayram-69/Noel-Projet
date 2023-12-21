@@ -24,13 +24,19 @@ On aura l’occasion d’ajouter des produits dans notre liste au Père Noël et
    ```
 
 4. Configurez une base de données MySQL:
-   Créez une base de données `santalist_db` et les tables nécessaires (issu de votre travail précédent).
-   Utilisez le fichier schema.sql pour faire ce travail puis lancez le script adequat (tout ceci grâce au fichier `migrate.js`).
+   Créez la base de données `santalist_db` et les tables nécessaires (issu de votre travail précédent) dans le fichier `schema.sql`.
+   Puis lancez le script.
+   
+   ```js
+   cd backend
+   npm run db:migrate
+   ```
+   
    PS:on oublie pas de créer son fichier `.env` dans le dossier backend avec les infos nécessaires !
 
-5. Connectez-vous à la base de données MySQL depuis votre application Express.js.
+6. Connectez-vous à la base de données MySQL depuis votre application Express.js.
 
-6. Créez les routes suivantes dans votre application Express.js (évidement il va falloir faire ça à la façon Ayoub: créez un dossier routers et des fichier pour gérer les routes pour chaque tables et gérer ces differentes routes dans le fichier router.js de base):
+7. Créez les routes suivantes dans votre application Express.js (évidement il va falloir faire ça à la façon Ayoub: créez un dossier routers et des fichier pour gérer les routes pour chaque tables et gérer ces differentes routes dans le fichier router.js de base):
 
    - `GET /api/products` : Récupérer tous les produits de la base de données.
    - `POST /api/products` : Ajouter un nouveau produit à la base de données.
@@ -50,19 +56,19 @@ On aura l’occasion d’ajouter des produits dans notre liste au Père Noël et
    - `PUT /api/manufacturers/:id` : Mettre à jour un fabricant (changer son lieu de production par exemple)
    - `DELETE /api/manufacturers/:id` : Supprimer un fabricant de la base de données (une fois de plus supprimer les produits de ce dernier par cascade).
 
-7. Créez les fichiers `productControllers`, `categoryControllers` et `manufacturerControllers` qui contiendront la logique de vos routes en utilisant la nomenclature `BREAD` (cf. le fichier `itemControllers.js`).
+8. Créez les fichiers `productControllers`, `categoryControllers` et `manufacturerControllers` qui contiendront la logique de vos routes en utilisant la nomenclature `BREAD` (cf. le fichier `itemControllers.js`).
 
-8. Créez les fichiers `ProductManager`, `CategoryManager` et `ManufacturerManager` qui contiendront les fonctions permettant d'interagir avec la base de données (logique CRUD). Importez ce fichier dans vos controllers pour utiliser les fonctions.
+9. Créez les fichiers `ProductManager`, `CategoryManager` et `ManufacturerManager` qui contiendront les fonctions permettant d'interagir avec la base de données (logique CRUD). Importez ce fichier dans vos controllers pour utiliser les fonctions.
 
-9. Importez et ajouter vos différents fichier `%Manager.js` dans le fichier `tables.js`.
+10. Importez et ajouter vos différents fichier `%Manager.js` dans le fichier `tables.js`.
 
-10. Remplissez vos tables grâce au fichier `seed.js` (préparé par votre client) en lançant la commande :
+11. Remplissez vos tables grâce au fichier `seed.js` (préparé par votre client) en lançant la commande :
 
     ```js
     npm run db:seed
     ```
 
-11. Testez vos différentes routes avec Postman (puis relancez la commande précédente)
+12. Testez vos différentes routes avec Postman (puis relancez la commande précédente)
 
 ### Partie Client (React)
 
@@ -85,13 +91,15 @@ On aura l’occasion d’ajouter des produits dans notre liste au Père Noël et
 
 4. Utilisez l'API Express.js pour récupérer la liste des produits et les afficher dans votre composant `Productlist` et faites de même pour la liste des fabricants dans le composant `ManufacturerList`.
 
-5. Ajoutez la possibilité de créer un nouveau produit(qu'on souhaiterait ajouter à notre wishlist mais qui ne serait pas déjà présent dans la liste) en utilisant l'API Express.js dans un nouveau composant `CreateProduct`.
+5. Ajoutez la possibilité de créer un nouveau produit (qu'on souhaiterait ajouter à notre wishlist mais qui ne serait pas déjà présent dans la liste) en utilisant l'API Express.js dans un nouveau composant `CreateProduct`.
+   Il faudra ajouter une contrôle de validation sur ce formulaire (côté frontend).
+   Pour ce nouveau produit on ne renseignera que le nom, la quantité en stock et le prix unitaire. L'utilisateur sélectionnera la catégorie et le fabricant via un input de type select.
 
-6. Ajoutez des fonctionnalités pour ajouter un produit à la Santalist (modifié le statut isWish du produit et réduire le stock de ce produit en copnséquence) ou supprimer un produit de la Santalist.
+6. Ajoutez des fonctionnalités pour ajouter un produit à la Santalist (modifié le statut isWish du produit et réduire le stock de ce produit en conséquence) ou supprimer un produit de la Santalist.
 
 7. Ajoutez une condition pour n'afficher que les produits avec un stock supérieur à 0 dans la `ProductsPage`.
 
-8. Ajoutez des filtres à la `ProductsPage`
+8. Ajoutez des filtres (côté frontend seulement) à la `ProductsPage`
    - filtrer par catégorie.
    - rechercher un produit par son nom.
    - filtrer par tranche de prix.
@@ -108,6 +116,8 @@ On aura l’occasion d’ajouter des produits dans notre liste au Père Noël et
   - 226f54
   - 43291f
   - f4f0bb
+
+- Un vote se fera au retour des vacances pour le plus BEAU site ! (peut-être un badge à la clé)
 
 ## Ressources
 
