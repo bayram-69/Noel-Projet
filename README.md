@@ -26,17 +26,17 @@ On aura l’occasion d’ajouter des produits dans notre liste au Père Noël et
 4. Configurez une base de données MySQL:
    Créez la base de données `santalist_db` et les tables nécessaires (issu de votre travail précédent) dans le fichier `schema.sql`.
    Puis lancez le script.
-   
+
    ```js
    cd backend
    npm run db:migrate
    ```
-   
+
    PS:on oublie pas de créer son fichier `.env` dans le dossier backend avec les infos nécessaires !
 
-6. Connectez-vous à la base de données MySQL depuis votre application Express.js.
+5. Connectez-vous à la base de données MySQL depuis votre application Express.js.
 
-7. Créez les routes suivantes dans votre application Express.js (évidement il va falloir faire ça à la façon Ayoub: créez un dossier routers et des fichier pour gérer les routes pour chaque tables et gérer ces differentes routes dans le fichier router.js de base):
+6. Créez les routes suivantes dans votre application Express.js (évidement il va falloir faire ça à la façon Ayoub: créez un dossier routers et des fichier pour gérer les routes pour chaque tables et gérer ces differentes routes dans le fichier router.js de base):
 
    - `GET /api/products` : Récupérer tous les produits de la base de données.
    - `POST /api/products` : Ajouter un nouveau produit à la base de données.
@@ -56,19 +56,20 @@ On aura l’occasion d’ajouter des produits dans notre liste au Père Noël et
    - `PUT /api/manufacturers/:id` : Mettre à jour un fabricant (changer son lieu de production par exemple)
    - `DELETE /api/manufacturers/:id` : Supprimer un fabricant de la base de données (une fois de plus supprimer les produits de ce dernier par cascade).
 
-8. Créez les fichiers `productControllers`, `categoryControllers` et `manufacturerControllers` qui contiendront la logique de vos routes en utilisant la nomenclature `BREAD` (cf. le fichier `itemControllers.js`).
+7. Créez les fichiers `productControllers`, `categoryControllers` et `manufacturerControllers` qui contiendront la logique de vos routes en utilisant la nomenclature `BREAD` (cf. le fichier `itemControllers.js`).
 
-9. Créez les fichiers `ProductManager`, `CategoryManager` et `ManufacturerManager` qui contiendront les fonctions permettant d'interagir avec la base de données (logique CRUD). Importez ce fichier dans vos controllers pour utiliser les fonctions.
+8. Créez les fichiers `ProductManager`, `CategoryManager` et `ManufacturerManager` qui contiendront les fonctions permettant d'interagir avec la base de données (logique `CRUD`). Importez ce fichier dans vos controllers pour utiliser les fonctions.
 
-10. Importez et ajouter vos différents fichier `%Manager.js` dans le fichier `tables.js`.
+9. Importez et ajouter vos différents fichier `%Manager.js` dans le fichier `tables.js`.
 
-11. Remplissez vos tables grâce au fichier `seed.js` (préparé par votre client) en lançant la commande :
+10. Remplissez vos tables grâce au fichier `seed.js` (préparé par votre client) en lançant la commande :
 
     ```js
     npm run db:seed
     ```
 
-12. Testez vos différentes routes avec Postman (puis relancez la commande précédente)
+11. Testez vos différentes routes avec Postman : Ajouter/Modifier/Supprimer/Obtener des produits/catégories et fabricant
+    Puis relancez la commande précédent pour avoir une base de donnée propre.
 
 ### Partie Client (React)
 
@@ -100,24 +101,29 @@ On aura l’occasion d’ajouter des produits dans notre liste au Père Noël et
 7. Ajoutez une condition pour n'afficher que les produits avec un stock supérieur à 0 dans la `ProductsPage`.
 
 8. Ajoutez des filtres (côté frontend seulement) à la `ProductsPage`
+
    - filtrer par catégorie.
+   - filtrer par fabricant.
    - rechercher un produit par son nom.
    - filtrer par tranche de prix.
-     (le client souhaiterait qu'ils soient cumulables évidemment)
+
+   ===> le client souhaiterait qu'ils soient cumulables évidemment <===
 
 ### Extra
 
 - Ajoutez une formulaire d'envoi au Père Noël de la Santalist !
+- Gérer les filtres grâce aux `req.query` via le backend.
 
 ## Bonus
 
 - Ajoutez des styles CSS pour améliorer l'apparence de votre application de Noël en respectant les 4 couleurs données par le client :
+
   - da2c38
   - 226f54
   - 43291f
   - f4f0bb
 
-- Un vote se fera au retour des vacances pour le plus BEAU site ! (peut-être un badge à la clé)
+- Un vote se fera au retour des vacances pour le plus BEAU site (fonctionnel aussi ^^)! (peut-être un badge à la clé)
 
 ## Ressources
 
