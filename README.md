@@ -96,7 +96,7 @@ On aura l’occasion d’ajouter des produits dans notre liste au Père Noël et
    Il faudra ajouter une contrôle de validation sur ce formulaire (côté frontend).
    Pour ce nouveau produit on ne renseignera que le nom, la quantité en stock et le prix unitaire. L'utilisateur sélectionnera la catégorie et le fabricant via un input de type select.
 
-6. Ajoutez des fonctionnalités pour ajouter un produit à la Santalist (modifié le statut isWish du produit et réduire le stock de ce produit en conséquence) ou supprimer un produit de la Santalist.
+6. Ajoutez des fonctionnalités pour ajouter un produit à la Santalist (modifié le statut is_fav du produit et réduire le stock de ce produit en conséquence) ou supprimer un produit de la Santalist.
 
 7. Ajoutez une condition pour n'afficher que les produits avec un stock supérieur à 0 dans la `ProductsPage`.
 
