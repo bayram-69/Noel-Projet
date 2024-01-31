@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import { NavLink, useLoaderData } from "react-router-dom";
 import { useBasket } from "../context/BasketCount";
 import CreateProduct from "./CreateProduct";
@@ -58,6 +59,11 @@ function ProductList() {
         [filterType]: value,
       };
     });
+  };
+
+  const handleAddToBasket = (product) => {
+    addToBasket(product);
+    toast.success(`${product.name} added to your santalist!`);
   };
 
   const filteredProducts = applyFilters();
@@ -144,7 +150,7 @@ function ProductList() {
                         type="button"
                         className="transparent-button"
                         onClick={() => {
-                          addToBasket(p);
+                          handleAddToBasket(p);
                         }}
                       >
                         <img

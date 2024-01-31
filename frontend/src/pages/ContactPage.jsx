@@ -34,73 +34,75 @@ function ContactPage() {
   };
 
   return (
-    <div className="contactPage">
-      <div>
-        <img src={noel} alt="père noel" />
+    <div>
+      <div className="santalist">
+        <h2 className="">Contact Us</h2>
       </div>
-      <div className="contact-container">
-        <div className="santalist">
-          <h2 className="">Contact Us</h2>
+      <div className="contactPage">
+        <div>
+          <img src={noel} alt="père noel" />
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="">
-            <div className="name-login">
-              <label htmlFor="name" className="">
-                Your name:
-              </label>
-              <input
-                className="input-login"
-                type="text"
-                name="name"
-                {...register("name", {
-                  required: "This field is required",
-                  minLength: { value: 3, message: "Minimum 3 characters" },
-                })}
-              />
-              {errors.name && <span className="">{errors.name.message}</span>}
+        <div className="contact-container">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="">
+              <div className="name-login">
+                <label htmlFor="name" className="">
+                  Your name:
+                </label>
+                <input
+                  className="input-login"
+                  type="text"
+                  name="name"
+                  {...register("name", {
+                    required: "This field is required",
+                    minLength: { value: 3, message: "Minimum 3 characters" },
+                  })}
+                />
+                {errors.name && <span className="">{errors.name.message}</span>}
+              </div>
+
+              <div className="name-login">
+                <label htmlFor="email" className="">
+                  Your email:
+                </label>
+                <input
+                  className="input-login"
+                  type="email"
+                  {...register("email", {
+                    pattern: {
+                      value: /[\w.%+-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}/,
+                      message:
+                        "Please enter a valid email address like name@example.com",
+                    },
+                    required: "This field is required",
+                  })}
+                />
+                {errors.email && (
+                  <span className="text-red-500">{errors.email.message}</span>
+                )}
+              </div>
             </div>
 
             <div className="name-login">
-              <label htmlFor="email" className="">
-                Your email:
+              <label htmlFor="message" className="">
+                Message:
               </label>
-              <input
-                className="input-login"
-                type="email"
-                {...register("email", {
-                  pattern: {
-                    value: /[\w.%+-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}/,
-                    message:
-                      "Please enter a valid email address like name@example.com",
-                  },
+              <textarea
+                className="text-contact"
+                {...register("message", {
                   required: "This field is required",
+                  minLength: { value: 7, message: "Minimum 7 characters" },
                 })}
               />
-              {errors.email && (
-                <span className="text-red-500">{errors.email.message}</span>
+              {errors.message && (
+                <span className="text-red-500">{errors.message.message}</span>
               )}
             </div>
-          </div>
-
-          <div className="name-login">
-            <label htmlFor="message" className="">
-              Message:
-            </label>
-            <textarea
-              className="text-contact"
-              {...register("message", {
-                required: "This field is required",
-                minLength: { value: 7, message: "Minimum 7 characters" },
-              })}
-            />
-            {errors.message && (
-              <span className="text-red-500">{errors.message.message}</span>
-            )}
-          </div>
-          <button type="submit" className="button-contact">
-            Send
-          </button>
-        </form>
+            <button type="submit" className="button-contact">
+              Send
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

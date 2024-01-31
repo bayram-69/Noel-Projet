@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import { toast } from "react-toastify";
 import { useBasket } from "../context/BasketCount";
 
 function SingleProduct({ products }) {
@@ -26,6 +27,7 @@ function SingleProduct({ products }) {
 
   const handleAddToFavorites = () => {
     addToFavorites(products);
+    toast.success(`${products.name} added to your favorites!`);
   };
 
   return (
