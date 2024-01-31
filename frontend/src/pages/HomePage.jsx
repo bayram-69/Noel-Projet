@@ -13,7 +13,7 @@ function HomePage({ auth }) {
           <NavLink to="/santalist">My santaList</NavLink>
           {auth.role === "admin" && (
             <NavLink className="" to="/admin">
-              Administration
+              Administration of site
             </NavLink>
           )}
         </div>
