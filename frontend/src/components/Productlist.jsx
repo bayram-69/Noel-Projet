@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { NavLink, useLoaderData } from "react-router-dom";
 import { useBasket } from "../context/BasketCount";
-import CreateProduct from "./CreateProduct";
 
 function ProductList() {
   const products = useLoaderData();
@@ -115,10 +114,6 @@ function ProductList() {
               />
             </div>
           </div>
-        </div>
-
-        <div className="addProduct">
-          <CreateProduct />
         </div>
       </div>
 

@@ -2,7 +2,6 @@ import { useLoaderData } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Productlist from "../components/Productlist";
-import CreateProduct from "../components/CreateProduct";
 
 function ProductsPage() {
   const products = useLoaderData();
@@ -20,7 +19,6 @@ function ProductsPage() {
   return (
     <div>
       <Productlist products={production} />
-      <CreateProduct setUpdate={setUpdate} />
     </div>
   );
 }

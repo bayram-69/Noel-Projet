@@ -14,6 +14,9 @@ import SingleProductPage from "./pages/SingleProductPage";
 import HomePage from "./pages/HomePage";
 import ContactPage from "./pages/ContactPage";
 import FavoritePage from "./pages/FavoritePage";
+import AdminPage from "./pages/AdminPage";
+import Notfound from "./pages/Notfound";
+import ChristmasPage from "./pages/ChristmasPage";
 
 const router = createBrowserRouter([
   {
@@ -76,6 +79,18 @@ const router = createBrowserRouter([
       {
         path: "/favorite",
         element: <FavoritePage />,
+      },
+      {
+        path: "/admin",
+        element: <AdminPage />,
+      },
+      {
+        path: "/game",
+        element: <ChristmasPage />,
+      },
+      {
+        path: "*",
+        element: <Notfound />,
       },
     ],
   },

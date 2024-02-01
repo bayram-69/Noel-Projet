@@ -9,6 +9,7 @@ const ManufacturerManager = require("./models/ManufacturersManager");
 const ProductManager = require("./models/ProductManager");
 const UserManager = require("./models/UserManager");
 const ContactManager = require("./models/ContactManager");
+const RoleManager = require("./models/RoleManager");
 
 const managers = [
   ItemManager,
@@ -17,6 +18,7 @@ const managers = [
   ProductManager,
   UserManager,
   ContactManager,
+  RoleManager,
   // Add other managers here
 ];
 

@@ -9,6 +9,13 @@ CREATE TABLE category (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255)
 );
+
+CREATE TABLE role (
+    id int  NOT NULL AUTO_INCREMENT,
+    type varchar(150)  NOT NULL,
+    CONSTRAINT role_pk PRIMARY KEY (id)
+);
+
 CREATE TABLE product (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(155),
@@ -29,7 +36,7 @@ CREATE TABLE user (
     mail varchar(255)  NOT NULL UNIQUE,
     password varchar(255)  NOT NULL,
     registration_date DATETIME NOT NULL DEFAULT NOW(),
-    is_admin BOOLEAN NOT NULL DEFAULT FALSE,
+    role_id int  NOT NULL DEFAULT 1,
     CONSTRAINT user_pk PRIMARY KEY (id)
 );
 
@@ -41,3 +48,6 @@ CREATE TABLE contact (
     created_at DATETIME NOT NULL DEFAULT NOW(),
     CONSTRAINT id PRIMARY KEY (id)
 );
+
+ALTER TABLE user ADD CONSTRAINT User_Role FOREIGN KEY User_Role (role_id)
+    REFERENCES role (id);
